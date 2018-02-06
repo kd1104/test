@@ -1,0 +1,10 @@
+---
+- name: create AD users
+  win_domain_user:
+   name: "{{ item.name }}"
+   firstname: "{{ item.firstname }}"
+   surname: "{{ item.surname }}"
+   password: "{{ item.password }}"
+   email: '"{{ item.name }}"@ad1.${GUID}.example.opentlc.com'
+   state: present
+  with_items: "{{ user_info }}"
